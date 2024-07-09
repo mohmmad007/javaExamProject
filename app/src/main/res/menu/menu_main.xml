@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:title="ورود"
+        android:id="@+id/login"/>
+    <item android:title="آزمون های شما"
+        android:id="@+id/yourExamMenu"/>
+    <item android:title="آزمون ها"
+        android:id="@+id/Exams"/>
+    <item android:title="حساب کاربری"
+        android:id="@+id/account"/>
+
+</menu>

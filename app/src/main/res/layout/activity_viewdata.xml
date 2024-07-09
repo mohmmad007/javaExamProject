@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:gravity="center"
+
+        android:textSize="30dp"
+        android:id="@+id/examName"
+        android:layout_alignParentTop="true" /> <!-- TextView بالای Parent قرار می‌گیرد -->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/examName" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ذخیره آزمون"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:background="@drawable/input_view"
+        android:layout_marginHorizontal="20dp"
+        android:id="@+id/btnsave"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        />
+
+
+</RelativeLayout>

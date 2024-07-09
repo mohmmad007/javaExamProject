@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_question"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint=" سوال"
+        android:background="@drawable/qusetinsinputstyle"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/question"
+        android:maxLength="100"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="پاسخ صحیح"
+        android:background="@drawable/response_style"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:id="@+id/TR"
+        android:maxLength="50"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/question"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="پاسخ غلط"
+        android:background="@drawable/response_style"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:id="@+id/FR1"
+        android:maxLength="50"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/TR"
+        />
+    <EditText
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:hint="پاسخ غلط"
+    android:background="@drawable/response_style"
+    android:layout_margin="20dp"
+    android:padding="10dp"
+    android:id="@+id/FR2"
+    android:maxLength="50"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/FR1"
+    />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="پاسخ غلط"
+        android:background="@drawable/response_style"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:id="@+id/FR3"
+        android:maxLength="50"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/FR2"
+    />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="+"
+        android:textSize="30dp"
+        android:textColor="@color/white"
+        android:background="@drawable/input_view"
+        android:layout_margin="20dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/btnGenQ"
+
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:textSize="20dp"
+        android:textColor="@color/white"
+        android:background="@drawable/input_view"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
+        android:id="@+id/btnupdate"
+        android:padding="10dp"
+        android:layout_above="@+id/btnGenQ"
+        android:enabled="false"
+        />
+
+</RelativeLayout>

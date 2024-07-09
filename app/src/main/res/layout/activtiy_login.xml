@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <EditText
+        android:id="@+id/authorName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="نام کامل"
+        android:padding="16dp"
+        android:background="@drawable/response_style"
+        android:layout_margin="16dp" />
+
+    <EditText
+        android:id="@+id/authorPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="رمز عبور"
+        android:inputType="textEmailAddress"
+        android:padding="16dp"
+        android:background="@drawable/response_style"
+        android:layout_below="@id/authorName"
+        android:layout_margin="16dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ورود"
+        android:textSize="30sp"
+        android:background="@color/splashText"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/authorPass"
+        android:layout_margin="16dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonRegister"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="ثبت نام"
+        android:textSize="30sp"
+        android:background="@color/splashText"
+        android:textColor="@android:color/white"
+        android:layout_below="@id/buttonLogin"
+        android:layout_margin="16dp" />
+
+</RelativeLayout>

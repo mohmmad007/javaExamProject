@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ExamsActivity">
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="لیست آزمون ها "
+        android:gravity="center"
+        android:textSize="30dp"
+        android:id="@+id/examName"
+        android:layout_alignParentTop="true" /> <!-- TextView بالای Parent قرار می‌گیرد -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/Exams"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/examName" />
+</RelativeLayout>

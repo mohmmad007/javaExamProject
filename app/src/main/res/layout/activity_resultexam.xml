@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
     android:layout_width="match_parent">
 
@@ -11,7 +12,6 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="130dp"
         android:layout_height="130dp"
-
         android:background="@drawable/item_detail_exam"
         android:textColor="@color/white"
         android:gravity="center"
@@ -22,18 +22,17 @@
         android:id="@+id/itemNumE"
         />
 <!--    اینجا باید یه نمودار ساخته بشه   (توی دفتر جزئیات نوشته شده)-->
-    
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="130dp"
         android:layout_height="130dp"
-
+        android:layout_alignParentRight="true"
         android:background="@drawable/item_detail_exam"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="30sp"
         android:padding="10dp"
         android:layout_margin="20dp"
-        android:layout_toEndOf="@+id/itemNumE"
+
         android:id="@+id/itemTR"
         
         />
@@ -62,7 +61,7 @@
         android:padding="10dp"
         android:layout_margin="20dp"
         android:layout_below="@+id/itemTR"
-        android:layout_toRightOf="@+id/itemFR"
+        android:layout_alignParentRight="true"
         android:id="@+id/itemBR"
         />
 
@@ -90,7 +89,7 @@
         android:padding="10dp"
         android:layout_margin="20dp"
         android:layout_below="@+id/itemFR"
-        android:layout_toRightOf="@+id/itemTimeEnd"
+        android:layout_alignParentRight="true"
         android:id="@+id/itemPercentageTR"
         />
     <androidx.appcompat.widget.AppCompatTextView
@@ -118,9 +117,29 @@
             android:text="ریز جزئیات آزمون"
             android:padding="10dp"
             android:layout_margin="20dp"
-            android:layout_below="@+id/itemPercentageTR"
-            android:layout_toRightOf="@id/itemPercentageFR"
+            android:layout_below="@+id/itemTimeEnd"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
             android:id="@+id/itemShowHistoryExams"/>
-
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/itemShowHistoryExams"
+            android:text="روند پیشرفت شما"
+            android:background="@drawable/shaper_show_history"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginTop="70dp"
+            android:padding="15dp"
+            android:textSize="40dp"
+            android:id="@+id/ext"
+            />
+    <com.github.mikephil.charting.charts.BarChart
+        android:layout_below="@+id/ext"
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_margin="20dp"
+        tools:ignore="MissingClass" />
 </RelativeLayout>
 </ScrollView>

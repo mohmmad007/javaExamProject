@@ -9,10 +9,22 @@ public class ResponseField extends ExampleFileds {
     public static final String KEY_TIME="time";
     public static final String KEY_NUM_BLANK_R="numBlankR";
     public static final String KEY_PERCENTAGE_R="percentageR";
+    public static final String KEY_VALIDATION_Q="validationQ";
 
 
 
     private String EName;
+
+    public String getValidationQ() {
+        return validationQ;
+    }
+
+    public void setValidationQ(String validationQ) {
+        this.validationQ = validationQ;
+    }
+
+    private String validationQ;
+
 
     public String getAName() {
         return AName;
@@ -85,5 +97,15 @@ public class ResponseField extends ExampleFileds {
     private int numBlankR;
     private double percentageR;
     private int Id;
+    private int setVirtualColumn;
+
+    public int getSetVirtualColumn() {
+        return setVirtualColumn;
+    }
+
+    public void setSetVirtualColumn(int setVirtualColumn) {
+        this.setVirtualColumn = setVirtualColumn;
+    }
+
 
 }

@@ -8,6 +8,11 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.9.0"
 constraintlayout = "2.1.4"
+mpandroidchart = "v3.1.0"
+persiandate = "0.1.1"
+persiandatepicker = "1.2.1"
+persianmaterialdatetimepicker = "1.2.1"
+persianmaterialdatetimepickerVersion = "1.2.1"
 preference = "1.2.1"
 
 [libraries]
@@ -19,6 +24,11 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+mohamadamin-persianmaterialdatetimepicker = { module = "com.mohamadamin:persianmaterialdatetimepicker", version.ref = "persianmaterialdatetimepickerVersion" }
+mpandroidchart = { module = "com.github.PhilJay:MPAndroidChart", version.ref = "mpandroidchart" }
+persiandate = { module = "com.github.samanzamani.persiandate:PersianDate", version.ref = "persiandate" }
+persiandatepicker = { module = "com.aliab:PersianDatePicker", version.ref = "persiandatepicker" }
+persianmaterialdatetimepicker = { module = "com.github.aliabozaid:PersianMaterialDateTimePicker", version.ref = "persianmaterialdatetimepicker" }
 preference = { group = "androidx.preference", name = "preference", version.ref = "preference" }
 
 [plugins]

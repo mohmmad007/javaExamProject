@@ -27,13 +27,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewDataActivity extends AppCompatActivity implements View.OnClickListener {
-    RecyclerView recyclerView;
 //    List<QuestionsFieldViewActivity> questionsFieldViewActivities;
-    AdapterlistActivity adapter;
-//    Adapter adapter;
+    //    Adapter adapter;
+    RecyclerView recyclerView;
     ExampleSaverActivity dbhelper;
-//    ListView listView;
+    AdapterlistActivity adapter;
     AppCompatTextView examName;
+    //    ListView listView;
     Button btnSave;
     List<ExampleFileds> exampleList=new ArrayList<>();
     Intent i;
@@ -50,9 +50,9 @@ public class ViewDataActivity extends AppCompatActivity implements View.OnClickL
             AID=i.getIntExtra(ExampleFileds.KEY_AID,-1);
             ename=i.getStringExtra(ExampleFileds.KEY_NAME);
         }
+//        listView=findViewById(R.id.listview);
         recyclerView=findViewById(R.id.recyclerview);
         dbhelper=new ExampleSaverActivity(this);
-//        listView=findViewById(R.id.listview);
         examName=findViewById(R.id.examName);
         btnSave=findViewById(R.id.btnsave);
         btnSave.setOnClickListener(this);

@@ -3,6 +3,7 @@ package com.example.exampp_project;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -28,6 +30,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import com.google.android.material.navigation.NavigationView;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     Typeface myFont;
@@ -36,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     NavigationView navigationView;
     DrawerLayout drawerLayout;
     SharedPreferences pref;
+    AppCompatButton btnRanking;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +53,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-//        ExampleSaverActivity e=new ExampleSaverActivity(this);
-//        SQLiteDatabase db=e.getWritableDatabase();
-//        e.a();
+
+        ExampleSaverActivity e=new ExampleSaverActivity(this);
+        SQLiteDatabase db=e.getWritableDatabase();
+        e.a();
+//        Log.i("1log000", String.valueOf(true));
         changeStatusBarColor();
+        btnRanking=findViewById(R.id.btnRanking);
+        btnRanking.setOnClickListener(this);
         pref = getSharedPreferences("Author", MODE_PRIVATE);
         Integer pAId =pref.getInt("authorId",-1);
         String Aname=pref.getString("authorName","NOT_FOUND");
@@ -135,7 +143,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         Toast.makeText(MainActivity.this, "ابتدا وارد حساب کاربری خود بشوید", Toast.LENGTH_SHORT).show();
                     }
                 }if(id==R.id.Exams){
-                    Intent intent = new Intent(MainActivity.this,ExamsActivity.class);
+                    Intent intent = new Intent(MainActivity.this,ShowexamActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -200,5 +208,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
         }
+        if(v.getId()==btnRanking.getId()){
+            ExampleSaverActivity dbHelper=new ExampleSaverActivity(this);
+            SQLiteDatabase db=dbHelper.getWritableDatabase();
+            List<ResponseField> examList=dbHelper.getAllExam();
+            Intent i = new Intent(MainActivity.this,RankActivity.class);
+            i.putExtra("IdECounter",1);
+            i.putExtra("countExam",examList.size());
+            startActivity(i);
+            finish();
+
+
+        }
+
     }
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="60dp">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/examDetail"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="22dp"
+        android:background="@drawable/baseline_error_24"
+        android:padding="15dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/toExam"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginVertical="22dp"
+        android:background="@drawable/baseline_edit_square_24"
+        android:layout_toLeftOf="@id/examDetail"/>
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/ExamNameAdapter"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginHorizontal="0dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="300dp"
+        android:background="@drawable/response_style"
+        android:gravity="left"
+        android:text="aaa"
+        android:paddingLeft="15dp"
+        android:paddingTop="3dp"
+        android:textSize="20sp"
+        tools:ignore="RtlHardcoded" /> <!-- یا android:gravity="left" -->
+
+</RelativeLayout>

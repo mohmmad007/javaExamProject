@@ -5,18 +5,21 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ExamsActivity">
+    tools:context=".Activity_exams">
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="لیست آزمون ها "
+        android:text="لیست آزمون ها"
         android:gravity="center"
         android:textSize="30dp"
         android:id="@+id/examName"
-        android:layout_alignParentTop="true" /> <!-- TextView بالای Parent قرار می‌گیرد -->
+        />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/Exams"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/examName" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/examName"
+        android:id="@+id/examrec"
+        />
+
+
 </RelativeLayout>

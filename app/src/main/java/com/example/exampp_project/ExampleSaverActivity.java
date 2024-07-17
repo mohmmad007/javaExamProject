@@ -10,7 +10,12 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.text.Editable;
 import android.util.Log;
 
+import java.text.DecimalFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -60,8 +65,8 @@ public class ExampleSaverActivity extends SQLiteOpenHelper {
             ResponseField.KEY_NUM_F_R + "' INTEGER, '" +
             ResponseField.KEY_NUM_BLANK_R + "' INTEGER, '" +
             ResponseField.KEY_TIME + "' INTEGER, '" +
-            ResponseField.KEY_PERCENTAGE_R + "' DOUBLE" +
-
+            ResponseField.KEY_PERCENTAGE_R + "' DOUBLE, '" +
+            ResponseField.KEY_VALIDATION_Q + "' TEXT" +
             ")";
 
     public ExampleSaverActivity(Context context) {
@@ -511,19 +516,14 @@ public class ExampleSaverActivity extends SQLiteOpenHelper {
 
     @SuppressLint("Range")
     public List<ResponseField> getExamHistory(int AId) {
-
+        int AuthorId;
         SQLiteDatabase db = getReadableDatabase();
 
 
-//        String query = "SELECT e.* FROM " + TABLE_EXAMPLES + " e " +
-//                "JOIN " + TABLE_RESPONSES + " r ON e.Id = r.Ename " +
-//                "WHERE r.AName = ?";
         @SuppressLint("Recycle") Cursor cursorres = db.rawQuery("SELECT * FROM " +
                         TABLE_RESPONSES + " WHERE AName = ?"
                 , new String[]{String.valueOf(AId)});
 
-//        @SuppressLint("Recycle") Cursor cursorExam = db.rawQuery(query,
-//                new String[]{String.valueOf(AId)});
         List<ResponseField> responseList = new ArrayList<>();
 
         if (cursorres.moveToFirst()) {
@@ -541,6 +541,8 @@ public class ExampleSaverActivity extends SQLiteOpenHelper {
                         ResponseField.KEY_PERCENTAGE_R))));
                 detail2.setEName(String.valueOf(cursorres.getString(cursorres.getColumnIndex(
                         ResponseField.KEY_E_NAME))));
+//                detail2.setValidationQ(String.valueOf(cursorres.getString(cursorres.getColumnIndex(
+//                        ResponseField.KEY_VALIDATION_Q))));
 
 
 
@@ -551,7 +553,8 @@ public class ExampleSaverActivity extends SQLiteOpenHelper {
                     do {
                         detail2.setId(Integer.parseInt(cursorExam.getString(cursorExam.getColumnIndex(
                                 ExampleFileds.KEY_ID))));
-
+                        AuthorId=Integer.parseInt(cursorExam.getString(cursorExam.getColumnIndex(
+                                ExampleFileds.KEY_AID)));
                         detail2.setAId(Integer.parseInt(cursorExam.getString(cursorExam.getColumnIndex(
                                 ExampleFileds.KEY_AID))));
                         detail2.setName(cursorExam.getString(cursorExam.getColumnIndex(
@@ -568,6 +571,15 @@ public class ExampleSaverActivity extends SQLiteOpenHelper {
                                 ExampleFileds.KEY_NUMQ))));
                         detail2.setAId(Integer.parseInt(cursorExam.getString(cursorExam.getColumnIndex(
                                 ExampleFileds.KEY_AID))));
+                        @SuppressLint("Recycle") Cursor cursorAuthor = db.rawQuery("SELECT * FROM " +
+                                        TABLE_AUTHOR + " WHERE Id = ? "
+                                , new String[]{String.valueOf(detail2.getAId())});
+                        if (cursorAuthor.moveToFirst()) {
+                            do {
+                                detail2.setAname(cursorAuthor.getString(cursorAuthor.getColumnIndex(
+                                        ExampleFileds.KEY_ANAME)));
+                            }while (cursorAuthor.moveToNext());
+                        }
                     } while (cursorExam.moveToNext());
                 }
                 cursorExam.close();
@@ -578,68 +590,225 @@ public class ExampleSaverActivity extends SQLiteOpenHelper {
 
         cursorres.close(); // بستن Cursor بعد از استفاده از آن
 
+        Log.i("9log00","saver");
 
         return responseList;
     }
-//    public void a(){
+    @SuppressLint("Range")
+    public void a(){
+        SQLiteDatabase db=getWritableDatabase();
+        int count = db.delete(TABLE_RESPONSES,
+                "Id = 10", null);
+        int count2 = db.delete(TABLE_RESPONSES,
+                "Id = 11", null);
+        int count3 = db.delete(TABLE_RESPONSES,
+                "Id = 12", null);
+        int count4 = db.delete(TABLE_RESPONSES,
+                "Id = 13", null);
+//        int count2 = db.delete(TABLE_RESPONSES,
+//                "EName = gf", null);
+
+        if (db.isOpen()) db.close();
+        }
+
+
+//        ContentValues values2 = new ContentValues();
+//        values2.put("AName", 1);
+//        values2.put("EName", 1);
+//        values2.put("numTR", 2);
+//        values2.put("numFR", 3);
+//        values2.put("numBlankR", 0);
+//        values2.put("Time", 66);
+//        values2.put("PercentageR", 30);
+//        values2.put("validationQ", "[0,0,1,1,0,1]");
+//
+//        db2.insert(TABLE_RESPONSES, null, values2);
 //        ContentValues values = new ContentValues();
 //        SQLiteDatabase db=getWritableDatabase();
-//        values.put("AName", 3);
-//        values.put("EName", 1);
+//        values.put("AName", 1);
+//        values.put("EName", 2);
 //        values.put("numTR", 2);
-//        values.put("numFR", 3);
-//        values.put("numBlankR", 0);
-//        values.put("Time", 20);
-//        values.put("PercentageR", 100);
-//
+//        values.put("numFR", 7);
+//        values.put("numBlankR", 1);
+//        values.put("Time", 66);
+//        values.put("PercentageR", 30);
+//        values.put("validationQ", "[0,0,1,1,0,1]");
 //        db.insert(TABLE_RESPONSES, null, values);
+//
+//        db2.insert(TABLE_RESPONSES, null, values2);
+//        ContentValues values3 = new ContentValues();
+//        SQLiteDatabase db3=getWritableDatabase();
+//        values3.put("AName", 2);
+//        values3.put("EName", 1);
+//        values3.put("numTR", 2);
+//        values3.put("numFR", 7);
+//        values3.put("numBlankR", 1);
+//        values3.put("Time", 66);
+//        values3.put("PercentageR", 30);
+//        values3.put("validationQ", "[0,0,1,1,0,1]");
+//        db3.insert(TABLE_RESPONSES, null, values3);
+
 //    }
 
+    @SuppressLint("Range")
+    public HashMap<String, Float> chartSelector(int pAId) {
+        SQLiteDatabase db = getReadableDatabase();
+        HashMap<String, Float> responseList = new HashMap<>();
+
+        Cursor cursor = db.rawQuery("SELECT e.name , r.percentageR \n" +
+                        "FROM tb_response r\n" +
+                        "JOIN tb_examplesbase e\n" +
+                        "ON e.Id = r.EName\n" +
+                        "WHERE r.Aname = ? "
+                                    , new String[]{String.valueOf(pAId)});
+        if(cursor.moveToFirst()){
+         do {
+             responseList.put(cursor.getString(cursor.getColumnIndex(ExampleFileds.KEY_NAME)),
+             Float.valueOf(cursor.getString(cursor.getColumnIndex(ResponseField.KEY_PERCENTAGE_R))));
+//             Log.i("NPercentage",cursor.getString(cursor.getColumnIndex(ExampleFileds.KEY_NAME)));
+//             Log.i("PPercentage",cursor.getString(cursor.getColumnIndex(ResponseField.KEY_PERCENTAGE_R)));
+
+         }while (cursor.moveToNext());
+        }
+        return responseList;
+    }
+
+    @SuppressLint("Range")
+    public List<ResponseField> getUserRanking(int idCounter) {
+        List<ResponseField> resRankList=new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT DISTINCT  e.name AS exam, a.Aname AS name, r.numTR, r.numFR, r.percentageR\n" +
+                "FROM tb_response r\n" +
+                "LEFT JOIN tb_examplesbase e ON e.Id = r.EName\n" +
+                "JOIN tb_authors a ON a.Id = r.AName\n" +
+                "WHERE r.EName = ?\n" +
+                "ORDER BY r.percentageR DESC",
+                new String[]{String.valueOf(idCounter)});
+        int rowNumber = 1; // متغیر شمارنده
+
+        if(cursor.moveToFirst()){
+            do {
+                Log.i("RankSQL",cursor.getString(cursor.getColumnIndex("exam")));
+                ResponseField RowRank = new ResponseField();
+                RowRank.setName(cursor.getString(cursor.getColumnIndex("exam")));
+                RowRank.setAname(cursor.getString(cursor.getColumnIndex("name")));
+                RowRank.setNumTR(cursor.getInt(cursor.getColumnIndex(ResponseField.KEY_NUM_T_R)));
+                RowRank.setNumFR(cursor.getInt(cursor.getColumnIndex(ResponseField.KEY_NUM_F_R)));
+                RowRank.setPercentageR(cursor.getInt(cursor.getColumnIndex(ResponseField.KEY_PERCENTAGE_R)));
+                RowRank.setSetVirtualColumn(rowNumber);
+                resRankList.add(RowRank);
+                rowNumber++; // افزایش شماره ردیف برای رکورد بعدی
+
+            }while (cursor.moveToNext());
+        }
+        cursor.close();
+
+        db.close();
+        return resRankList;
+    }
+
+    @SuppressLint("Range")
+    public List<ResponseField> getAllExam() {
+        SQLiteDatabase db = getReadableDatabase();
+        List<ResponseField> responseList=new ArrayList<>();
+
+        Cursor cursor = db.rawQuery("SELECT name,Id FROM " + TABLE_EXAMPLES, null);
+        if (cursor.moveToFirst()) {
+            do {
+                ResponseField Row = new ResponseField();
+
+                 Row.setName(cursor.getString(cursor.getColumnIndex("name")));
+                 Row.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex("Id"))));
+                 responseList.add(Row);
+            }while (cursor.moveToNext());
+
+        }
+        cursor.close();
+        Log.i("sql", String.valueOf(responseList));
+        return responseList;
+    }
+    public void insertAnswers(List<ExampleFileds> answers, int timer, int examId, int aid) {
+        int corrects = 0;
+        int incorrect = 0;
+        int blanks = 0;
+        double percentage;
+        ContentValues values = new ContentValues();
+        SQLiteDatabase db = getWritableDatabase();
+        for (ExampleFileds answer : answers) {
+            if (answer.getUserAnswer() == null) {
+                blanks++;
+            } else if (answer.getUserAnswer().trim().equals(answer.getTresponse().trim())) {
+                corrects++;
+            } else {
+                incorrect++;
+            }
+        }
+        percentage = calPercentage(corrects, incorrect, blanks);
+        values.put("AName", aid);
+        values.put("EName", examId);
+        values.put("numTR", corrects);
+        values.put("numFR", incorrect);
+        values.put("numBlankR", blanks);
+        values.put("Time", timer);
+        values.put("PercentageR", percentage);
+
+        db.insert(TABLE_RESPONSES, null, values);
+        Log.i("insert_responses", "responses inserted");
+    }
+
+    private double calPercentage(int corrects, int incorrect, int blanks) {
+        int allQuestions = corrects + incorrect + blanks;
+        double percentage = (double) (corrects * 100) / allQuestions;
+        DecimalFormat df = new DecimalFormat("0.00");
+        String formattedPercentage = df.format(percentage);
+
+        return Double.parseDouble(formattedPercentage);
+    }
+
+    @SuppressLint("Range")
+    public List<ExampleFileds> getActiveExams(LocalDate date) throws ParseException {
+        String inputDateStr = String.valueOf(date);
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date inputDate = inputFormat.parse(inputDateStr);
+            SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy/M/dd");
+            String outputDateStr = outputFormat.format(inputDate);
+            Log.i("today", outputDateStr);
+            SQLiteDatabase db = getReadableDatabase();
+            Cursor cursor;
+            List<ExampleFileds> exampleList = new ArrayList<>();
+            if (date != null) {
+                cursor = db.rawQuery("SELECT * FROM tb_examplesbase WHERE startDate <= ? AND expireDate >= ?", new String[]{outputDateStr, outputDateStr});
+//                cursor = db.rawQuery("SELECT * FROM tb_examplesbase",null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        ExampleFileds exam = new ExampleFileds();
+                        exam.setId(cursor.getInt(cursor.getColumnIndex(ExampleFileds.KEY_ID)));
+                        exam.setName(cursor.getString(cursor.getColumnIndex(ExampleFileds.KEY_NAME)));
+                        exam.setStartDate(cursor.getString(cursor.getColumnIndex(ExampleFileds.KEY_STARTDATE)));
+                        exam.setExpireDate(cursor.getString(cursor.getColumnIndex(ExampleFileds.KEY_EXPIREDATE)));
+                        exam.setExamTime(cursor.getInt(cursor.getColumnIndex(ExampleFileds.KEY_EXAMTIME)));
+                        exam.setNumQ(cursor.getInt(cursor.getColumnIndex(ExampleFileds.KEY_NUMQ)));
+                        exam.setAId(cursor.getInt(cursor.getColumnIndex(ExampleFileds.KEY_AID)));
+                        exampleList.add(exam);
+                    } while (cursor.moveToNext());
+                } else {
+                    Log.i("xcy", "No active exams found.");
+                }
+
+                cursor.close();
+            } else {
+                Log.i("xcy", "Date is null.");
+            }
+
+            // Close the database connection
+            if (db.isOpen()) db.close();
+
+            return exampleList;
+
+        } catch (ParseException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

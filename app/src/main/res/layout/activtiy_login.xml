@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="رمز عبور"
-        android:inputType="textEmailAddress"
+        android:inputType="numberPassword"
         android:padding="16dp"
         android:background="@drawable/response_style"
         android:layout_below="@id/authorName"

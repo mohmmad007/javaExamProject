@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qusetinsinputstyle"
+
+        android:layout_margin="10dp"
+        >
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentRight="true"
+        android:padding="25dp"
+        android:text="1"
+        android:textSize="20sp"
+        android:paddingVertical="20dp"
+
+        android:gravity="right"
+        tools:ignore="RtlHardcoded" /> <!-- یا android:gravity="left" -->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/uName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/uNum"
+        android:paddingVertical="20dp"
+        android:paddingHorizontal="10dp"
+        android:text="نام"
+        android:textSize="25sp"
+        tools:ignore="RtlHardcoded" /> <!-- یا android:gravity="left" -->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/uNumTR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/uName"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="10dp"
+            android:text=" درست"
+            android:textSize="25sp"
+            tools:ignore="RtlHardcoded" /> <!-- یا android:gravity="left" -->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/uNumFR"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/uNumTR"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="10dp"
+            android:text="غلط"
+            android:textSize="25sp"
+            tools:ignore="RtlHardcoded" /> <!-- یا android:gravity="left" -->
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/uPercent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/uNumFR"
+            android:paddingVertical="20dp"
+            android:paddingHorizontal="10dp"
+            android:text="درصد"
+            android:textSize="25sp"
+            tools:ignore="RtlHardcoded" /> <!-- یا android:gravity="left" -->
+
+</RelativeLayout>
+
+
+</RelativeLayout>

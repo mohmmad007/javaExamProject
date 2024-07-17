@@ -5,6 +5,7 @@
     <color name="splashText">#FF9800</color>
     <color name="buttons">#2280CC</color>
     <color name="acItem">#3F51B5</color>
+    <color name="green">#4CAF50</color>
 
 
 </resources>

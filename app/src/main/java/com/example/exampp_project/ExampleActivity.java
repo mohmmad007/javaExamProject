@@ -1,4 +1,7 @@
 package com.example.exampp_project;
+import android.os.Bundle;
+
+
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -82,7 +85,8 @@ public class ExampleActivity extends AppCompatActivity implements View.OnClickLi
             boolean validationExpireDate= Utils.validationDate(SexpireTime,this);
 
             if(validation && validationStartDate && validationExpireDate){
-
+//                    String StartDateType=SstartTime.replace("/","-");
+//                    String ExpireDateType=SstartTime.replace("/","-");
                     try (ExampleSaverActivity Eadd = new ExampleSaverActivity(this)) {
                         SQLiteDatabase db = Eadd.getWritableDatabase();
                         Intent intent2 = getIntent();

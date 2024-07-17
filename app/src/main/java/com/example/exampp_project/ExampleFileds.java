@@ -38,6 +38,16 @@ public class ExampleFileds{
     private String Fresponse2;
     private String Fresponse3;
 
+    public String getUserAnswer() {
+        return UserAnswer;
+    }
+
+    public void setUserAnswer(String userAnswer) {
+        UserAnswer = userAnswer;
+    }
+
+    private String UserAnswer;
+
     public int getId() {
         return Id;
     }

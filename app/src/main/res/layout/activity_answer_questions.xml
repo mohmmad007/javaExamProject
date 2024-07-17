@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_question"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:text="10:12"
+        android:textSize="20sp"
+        android:id="@+id/timer"
+        android:gravity="center"/>
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qusetinsinputstyle"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:id="@+id/questionE"
+        android:maxLength="100"
+        android:layout_below="@+id/timer"
+        />
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/questionE"
+        android:id="@+id/answer"
+        >
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/radio_button_background_selector"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:id="@+id/TRE"
+            android:maxLength="50"
+            android:button="@drawable/button_selector"
+            android:text="Option 1"
+            />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/radio_button_background_selector"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:id="@+id/FR1E"
+            android:maxLength="50"
+            android:button="@drawable/button_selector"
+            android:text="Option 2"
+            />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/radio_button_background_selector"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:id="@+id/FR2E"
+            android:maxLength="50"
+            android:button="@drawable/button_selector"
+            android:text="Option 3"
+            />
+
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="@drawable/radio_button_background_selector"
+            android:layout_margin="20dp"
+            android:padding="10dp"
+            android:id="@+id/FR3E"
+            android:maxLength="50"
+            android:button="@drawable/button_selector"
+            android:text="Option 4"
+            />
+    </RadioGroup>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnnext"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerVertical="true"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="173dp"
+        android:background="@drawable/input_view"
+        android:text="بعدی"
+        android:textColor="@color/white"
+        android:textSize="30dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnback"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="175dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="22dp"
+        android:layout_toRightOf="@+id/btnsabt"
+        android:background="@drawable/input_view"
+        android:padding="10dp"
+        android:text="قبلی"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:visibility="visible" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnsabt"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="5dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="137dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_toRightOf="@+id/btnnext"
+        android:background="@drawable/input_view"
+        android:padding="10dp"
+        android:text="ثبت آزمون"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        android:visibility="visible" />
+</RelativeLayout>

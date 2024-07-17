@@ -87,7 +87,7 @@ public class Utils {
     }
 
     public static boolean validationDate(String Date, ExampleActivity exampleActivity) {
-        boolean vaild=false;
+        boolean vaild=true;
         char delimiter = '/';
         int countStart=0;
         for (int i = 0; i < Date.length(); i++) {
@@ -105,19 +105,17 @@ public class Utils {
             int inputYear = Integer.parseInt(parts[0]);
             int inputMonth = Integer.parseInt(parts[1]);
             int inputDay = Integer.parseInt(parts[2]);
-
-            if(inputYear<=2000 || inputYear>=2100 || inputMonth<1 || inputYear>=13
-                    || inputDay<1 || inputDay>=32){
+            int sumInputDate=(inputYear*365)+(inputMonth*30)+(inputDay);
+            int sumCurrentDate=(currentYear*365)+(currentMonth*30)+(currentDay);
+            if(inputYear<=2000 || inputYear>=2100 || inputMonth<1 || inputMonth>=13 || inputDay<1 || inputDay>=32){
                 Toast.makeText(exampleActivity, "تاریخ صحیح نیست", Toast.LENGTH_SHORT).show();
-            }// else if (inputYear < currentYear ||
-//                (inputYear == currentYear && inputMonth < currentMonth) ||
-//                (inputYear == currentYear && inputMonth == currentMonth && inputDay < currentDay)) {
-//            Toast.makeText(exampleActivity, "تاریخ شروع صحیح نیست2", Toast.LENGTH_SHORT).show();
-//
-//        } else {
-//        vaild=true;
-//        }
+                vaild=false;
+            }else if(sumInputDate<sumCurrentDate){
+                vaild=false;
+                Toast.makeText(exampleActivity, "تاریخ شروع صحیح نیست2", Toast.LENGTH_SHORT).show();
+            }
         }else {
+            vaild=false;
             Toast.makeText(exampleActivity, "تاریخ صحیح نیست", Toast.LENGTH_SHORT).show();
         }
 
